@@ -1,1 +1,2 @@
-print("Hellow, World!")
+class Sihh(obj):
+    __slots__ = ("__instance", )
