@@ -1,5 +1,5 @@
 print("Hellow, World")
-
+print()
 def foo():
     return foo()
 class Singleton(object):
