@@ -1,1 +1,2 @@
-Режим вывода команд на экран (ECHO) включен.
+class Singleton(object):
+    __slots__ = ("__instance", )
