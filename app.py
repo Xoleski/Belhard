@@ -1,3 +1,4 @@
+print("Hellow, World")
 def foo():
     return foo()
 class Singleton(object):
