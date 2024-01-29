@@ -95,8 +95,18 @@ age = 34
 #
 # print(text.rpartition("python"))
 
-text = "Hello python world"
-#
+# text = "Hello\tptn\twld"
+
+# print(text.expandtabs(4)) # удобно делать колонки таблицы
+
+
+# text = "Hello"
+# print(text.center(10))
+# print(text.zfill(10))
+
+
+# print("Hello wold".count("l"))
+
 # print(text.replace(" ", "___"))
 
 # print(text.startswith("Hel"))
