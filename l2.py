@@ -31,7 +31,22 @@
 #
 # print(bool(" "))
 
+# text = "Hellow\n"
+# a = len(text)
+#
+# print(a)
 
+text = "Python"
+# print(text[0])
+# print(text[-6])
+#
+# # [-len:len) не включая последний
+#
+# print(text[1:4])
+# print(text[1:1244])
+# print(text[::2])
+# print(text[::2])
+# print(text[::-1])
 
 
 
