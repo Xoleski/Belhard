@@ -75,5 +75,50 @@ age = 34
 # text = f"{3.587:.2f}"
 # print(text)
 
+# text = "hellow World pytHon"
+# print(text.title())
+
+# text = "Hellow World pt"
+# words = text.split()
+# words2 = "-|-".join(words)
+# print(words2)
+
+
+# print(text.find("ell", 1))
+
+
+
+# print(text.index("oll"))
+
+# text = "Hello python python world"
+# print(text.partition("python"))
+#
+# print(text.rpartition("python"))
+
+text = "Hello python world"
+#
+# print(text.replace(" ", "___"))
+
+# print(text.startswith("Hel"))
+
+
+
+# print(text.islower())
+# print(text.isupper())
+# print(text.istitle())
+
+# print(text.isalpha()) # только из букв
+# print(text.isdigit()) # строка из чисел
+# print(text.isdecimal()) #
+# print(text.isnumeric())
+# print(text.isalnum()) # строка сост бук и или цифр
+# print(text.isalpha()) #
+# print(text.isspace())
+# print(text.isascii())
+# print(text.isidentifier())
+# print(text.isprintable())
+
+
+
 
 
