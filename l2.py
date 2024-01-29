@@ -130,5 +130,22 @@ age = 34
 
 
 
+# print("Hello" in "Hello world")
+
+
+# l = 3600
+# f = 60 * 60
+# print(l is f)
+
+
+print(bin(15))
+print(bin(14))
+print(15 & 14)
+print(15 | 14)
+
+print(15 ^ 14) # циркомплекс
+
+
+
 
 
