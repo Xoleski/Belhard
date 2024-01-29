@@ -138,14 +138,23 @@ age = 34
 # print(l is f)
 
 
-print(bin(15))
-print(bin(14))
-print(15 & 14)
-print(15 | 14)
+# print(bin(15))
+# print(bin(14))
+# print(15 & 14)
+# print(15 | 14)
+#
+# print(15 ^ 14) # циркомплекс
 
-print(15 ^ 14) # циркомплекс
+# n = 128
+# print((n & (n-1) ))
 
+# print(~-800)
 
+# text = "hello world"
+# print()
+
+# print(bin(13))
+# print(bin(13 << 2))
 
 
 
