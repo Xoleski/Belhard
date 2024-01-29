@@ -36,7 +36,7 @@
 #
 # print(a)
 
-text = "Python"
+# text = "Python"
 # print(text[0])
 # print(text[-6])
 #
@@ -48,6 +48,32 @@ text = "Python"
 # print(text[::2])
 # print(text[::-1])
 
+# path = r"\n"
+
+name = "Alex"
+age = 34
+
+# text = "Hellow %s %s" % (name, age)
+# print(text)
+
+# text = "Hello {fir_n} {us_ag}".format(fir_n=name, us_ag=age)
+# print(text)
+
+# text = f"Hello {name} {age + 2}"
+# print(text)
+
+# a = 42
+# b = str(a)
+# c = f"{a}"
+
+# text = b"Hello"
+# print(text)
+
+# text = "\N{fire}"
+# print(text)
+
+# text = f"{3.587:.2f}"
+# print(text)
 
 
 
