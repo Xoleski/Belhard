@@ -6,9 +6,11 @@ input_line = input("Напишите предложение...")
 print(input_line)
 
 
-chang_line = input_line.replace(" ", "-")
-print(chang_line)
 
+change_line = input_line.replace(" ", "-")
+print(change_line)
 
+change_line_2 = input_line.split()
+print(change_line_2)
 
 
