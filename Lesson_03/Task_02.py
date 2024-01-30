@@ -11,7 +11,3 @@ arithmetic_mean = ((float(numbers_list.split()[0])
                    / 3)
 
 print(arithmetic_mean)
-
-
-
-

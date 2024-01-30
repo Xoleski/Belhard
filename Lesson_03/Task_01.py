@@ -10,5 +10,3 @@ print(changed_line)
 
 changed_line_2 = "-".join(input_line.split())
 print(changed_line_2)
-
-
