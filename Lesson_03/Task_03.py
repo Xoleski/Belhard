@@ -7,6 +7,11 @@ name = input("Введите имя: ")
 age = input("Введите возраст: ")
 city = input("Введите город: ")
 
-hi_message = "Меня зовут %s. Мне %a лет. Я из города %c." % (name, age, city)
-
+hi_message = "Меня зовут %s. Мне %s лет. Я из города %s." % (name, age, city)
 print(hi_message)
+
+hi_message_02 = "Меня зовут {name}. Мне {age} лет. Я из города {city}.".format(name=name, age=age, city=city)
+print(hi_message_02)
+
+hi_message_03 = f"Меня зовут {name}. Мне {age} лет. Я из города {city}."
+print(hi_message_03)
