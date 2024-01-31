@@ -23,21 +23,34 @@ obj = [1, "H", 5, text]
 #
 # obj.remove(1) # удаляет по значению
 
-gtr = [2, 5, 1]
-# gtr.append(5) # один объект в конеу
+# gtr = [2, 5, 1]
+# # gtr.append(5) # один объект в конеу
+# #
+# # gtr.insert(0, 7)
+# #
 #
-# gtr.insert(0, 7)
+# # gtr.extend([5, 6, 7])
 #
+# print(gtr)
 
-# gtr.extend([5, 6, 7])
+# aaa = [2, 7, 8, 6]
+# bbb = aaa
+# bbb.append(6)
+# print(aaa)
+#
+# ccc = a[:]
+# fff = aaa.copy()
 
-print(gtr)
+
 
 
 # frt = gtr + gtr
 #
 # print(frt)
 
+# b = (1, 2, 3)
+# a = 1, 2, 3
+# c = (1, )
 
 
 
