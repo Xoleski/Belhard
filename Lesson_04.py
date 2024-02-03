@@ -84,12 +84,40 @@
 # objs.remove(6) # удаляет по значению
 # print(objs)
 
+# from sys import  getrefcount
+# a = []
+# a.append(a)
+# print(a)
+# print(getrefcount(a)) # считает количество ссылок на объект
+
+# a = []
+# a.append(5) # добовляет сторого один элемент и добавляет его в конец
+#             # за константное время
+# print(a)
+# a.insert(0, 6)
+# print(a)
 
 
+# a = [1, 3, 4, 12, 45, 89, 4]
+# a.extend([5, 6, 8])
+# a += [10,11,8] # = extend
+# print(a)
 
+# b = a + a
+# print(b)
 
+# l = a.index(1) # находит индекс по значению
+# print(l)
+# print(a.count(4))
 
-
+# a = [1, 3, 4, 12, 45, 89, 4, -12]
+# b = ["Hello", "python", "Age"]
+#
+# a.sort(key=abs, reverse=True)
+# b.sort(key=len)
+#
+# print(a)
+# print(b)
 
 
 
