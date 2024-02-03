@@ -211,11 +211,11 @@ print(c)
 
 n = 2
 
-number = [i for i in range(n+1)]
-print(list(range(n)))
-print(number)
+# number = [i for i in range(n+1)]
+# print(list(range(n)))
+# print(number)
 
-slovar = {number[p]: {input("Name: "): input("Email: ")} for p in range(n+1)}
+slovar = {[i for i in range(n+1)][p]: {input("Name: "): input("Email: ")} for p in range(n+1)}
 
 print(slovar)
 
