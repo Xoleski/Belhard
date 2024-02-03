@@ -55,14 +55,43 @@
 # print(a := 15) # моржовый оператор
 # print(a)
 
-objs = "Hello"
-a = list(objs)
-print(a)
+# objs = "Hello"
+# a = list(objs)
+# print(a)
+#
+# print(len(objs))
+#
+# # list comprehension генератор списка
+# zeros = [i + 2 for i in range(3)]
+# print(zeros)
 
-print(len(objs))
+# objs = [2, 1, 7, 8]
+# del objs[1]
+# del objs[2:]
+# print(objs)
 
-# list comprehansion генератор списка
-zeros = [i + 2 for i in range(3)]
-print(zeros)
+# text = "Hello"
+# objs = [2, 4, 8, 9, 10, 6, 6, text]
+# print(objs[-1] is text)
+#
+# a = objs.pop(3)
+# print(a)
+# print(objs)
+#
+# objs2 = objs[1:3]
+# print(objs2)
+
+# objs.remove(6) # удаляет по значению
+# print(objs)
+
+
+
+
+
+
+
+
+
+
 
 
