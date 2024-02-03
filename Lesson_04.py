@@ -111,13 +111,45 @@
 # print(a.count(4))
 
 # a = [1, 3, 4, 12, 45, 89, 4, -12]
-# b = ["Hello", "python", "Age"]
-#
+# b = ["Hello", "python", "Age", "apple"]
+
 # a.sort(key=abs, reverse=True)
 # b.sort(key=len)
 #
 # print(a)
 # print(b)
+
+# b.sort(key=str.lower)
+# print(b)
+
+
+# s_b = sorted(b, key=str.lower, reverse=True)
+# print(b)
+# print(s_b)
+
+# a = [1, 3, 4, 12, 45, 89, 4, -12]
+# a.reverse()
+# print(a)
+# b = a[::-1]
+# print(a)
+# print(b)
+
+# a = [1, 3, 4, 12, 45, 89, 4, -12, []]
+# b = a[:]
+# c = a.copy()
+# print(a)
+# print(b)
+# c.append(5)
+# c[-2].append(0)
+# print(c)
+# print(a)
+
+# g = (1, )
+#
+# c = (1, 3, 4, 12, 45, [], 89, 4, -12)
+#
+
+
 
 
 
