@@ -146,8 +146,67 @@
 
 # g = (1, )
 #
-# c = (1, 3, 4, 12, 45, [], 89, 4, -12)
+# c = {1, 3, 4, 12, 45, 45, 89, 4, -12}
+# b = {5, 45, 1}
 #
+#
+# print(c.isdisjoint(b)) # если сеты не пересекаются то тру
+#
+#
+# print(c.issubset(b)) # с является подмножетвом бэ
+# print(c >= b)
+#
+# print(c.issuperset(b))
+# print(c == b)
+
+
+# a = {1, 3, 4, 12, 89, 4, -12}
+# b = {5, 45, 1}
+
+# c = a.union(b, [0, 8], ("Hello", "World"))
+# print(c)
+# print(a | b)
+
+# print(a.difference(b))
+# print(a - b)
+#
+# print(a.intersection(b))
+# print(a & b)
+#
+# print(a.symmetric_difference(b))
+# print(a ^ b)
+
+
+# c = frozenset([1, 5, 9, 7])
+# print(c)
+
+# import collections
+# from collections import *
+#
+# words = ["hello", "world", 'Hello', "pythom"]
+#
+# c = Counter(words)
+# print(c)
+
+
+n = 5
+c = [2**i for i in range(1, n)]
+print(c)
+
+
+
+fraza = input("Введите любую фразу: ")
+
+buk = list(fraza)
+buk_set = sorted(list(set(buk)))
+n = len(buk_set)
+
+col_e = [buk.count(buk[buk.index(buk_set[i])]) for i in range(n)]
+
+some_list = [[buk_set[i], col_e[i]] for i in range(n)]
+
+counter_of_letters = dict(some_list)
+print(counter_of_letters)
 
 
 
