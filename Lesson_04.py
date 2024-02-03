@@ -11,8 +11,8 @@
 
 # zeros = [0 for i in range(10)] # для и в диапазоне от 0 до 100
 # print(zeros)
-text = "a"
-obj = [1, "H", 5, text]
+# text = "a"
+# obj = [1, "H", 5, text]
 
 # ht = obj.pop(2)
 # print(ht)
@@ -54,5 +54,15 @@ obj = [1, "H", 5, text]
 
 # print(a := 15) # моржовый оператор
 # print(a)
+
+objs = "Hello"
+a = list(objs)
+print(a)
+
+print(len(objs))
+
+# list comprehansion генератор списка
+zeros = [i + 2 for i in range(3)]
+print(zeros)
 
 
