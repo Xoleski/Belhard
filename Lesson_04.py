@@ -195,21 +195,29 @@ print(c)
 
 
 
-fraza = input("Введите любую фразу: ")
+# fraza = input("Введите любую фразу: ")
+#
+# buk = list(fraza)
+# buk_set = sorted(list(set(buk)))
+# n = len(buk_set)
+#
+# col_e = [buk.count(buk[buk.index(buk_set[i])]) for i in range(n)]
+#
+# some_list = [[buk_set[i], col_e[i]] for i in range(n)]
+#
+# counter_of_letters = dict(some_list)
+# print(counter_of_letters)
 
-buk = list(fraza)
-buk_set = sorted(list(set(buk)))
-n = len(buk_set)
 
-col_e = [buk.count(buk[buk.index(buk_set[i])]) for i in range(n)]
+n = 2
 
-some_list = [[buk_set[i], col_e[i]] for i in range(n)]
+number = [i for i in range(n+1)]
+print(list(range(n)))
+print(number)
 
-counter_of_letters = dict(some_list)
-print(counter_of_letters)
+slovar = {number[p]: {input("Name: "): input("Email: ")} for p in range(n+1)}
 
-
-
+print(slovar)
 
 
 
