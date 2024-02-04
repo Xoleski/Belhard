@@ -156,5 +156,8 @@ age = 34
 # print(bin(13))
 # print(bin(13 << 2))
 
+text = "Hello world"
+print(text.replace(" ", ""))
+
 
 
