@@ -4,13 +4,8 @@
 
 fraza = input("Введите любую фразу: ")
 
-buk = list(fraza)
-buk_set = sorted(list(set(buk)))
-n = len(buk_set)
+buk = sorted(set(fraza))
 
-col_e = [buk.count(buk[buk.index(buk_set[i])]) for i in range(n)]
+slovar = {buk[i]: fraza.count(buk[i]) for i in range(len(buk))}
 
-some_list = [[buk_set[i], col_e[i]] for i in range(n)]
-
-counter_of_letters = dict(some_list)
-print(counter_of_letters)
+print(slovar)

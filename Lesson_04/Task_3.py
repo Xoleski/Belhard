@@ -3,7 +3,6 @@
 # а значения для этих ключей будут браться с клавиатуры
 
 n = 2
-# slovar = {[i for i in range(n+1)][p]: {"Name": input("Name: "), "Email": input("Email: ")} for p in range(n+1)}
 slovar = {p: {"Name": input("Name: "), "Email": input("Email: ")} for p in range(n+1)}
 
 
