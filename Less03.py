@@ -160,4 +160,9 @@ text = "Hello world"
 print(text.replace(" ", ""))
 
 
+a = 4
+b = 2
+c = 2
+d = b * c
 
+print(a is d)
