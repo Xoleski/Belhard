@@ -9,3 +9,5 @@ buk = sorted(set(fraza))
 slovar = {buk[i]: fraza.count(buk[i]) for i in range(len(buk))}
 
 print(slovar)
+
+# просто в словарь из текста. при повторе буквы заменит значение
