@@ -31,11 +31,26 @@ a = 5
 # user["city"] = city and "Mogilev" # end выберет первый, если первый False
 # print(user)
 
-text = "Hello world"
-for i in text:
-    print(i.upper())
+# text = "Hello world"
+# for i in text:
+#     print(i.upper())
 
 #
+# i = input("Введите число: ")
+# while not i.isdigit():
+#     i = input("Да?")
+# print("Ok")
+
+
+# data =  {"gf", "jjhh", "juh"}
+
+# tr = input("Words:")
+# b = [i.upper() for i in tr if i.isalpha()]
+# print(b)
+
+
+numbs = [4, 5, -9, 7, 8, -9]
+
 
 
 
