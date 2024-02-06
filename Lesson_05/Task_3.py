@@ -1,8 +1,8 @@
 # Вывести четные числа от 2 до N по 5 в строку
 
-n = 155
+n = 14
 
-lis = [i for i in range(2, n) if not i % 2]
+lis = [i for i in range(2, n+1) if not i % 2]
 
 d = 0
 
