@@ -3,18 +3,24 @@
 # потом действие
 # и второе число
 
-a = float(input("Введите первое число: "))
-c = input("Введите действие: ")
-b = float(input("Введите второе число: "))
+try:
+    a = float(input("Введите первое число: "))
+    c = input("Введите действие: ")
+    b = float(input("Введите второе число: "))
+    act = {
+        "+": a + b,
+        "-": a - b,
+        "*": a * b,
+        "/": a / b,
+        "**": a ** b,
+        "%": a % b
+    }
 
-act = {
-    "+": a.__add__(b),
-    "-": a.__sub__(b),
-    "*": a.__mul__(b),
-    "/": a.__truediv__(b),
-    "**": a.__pow__(b),
-    "%": a.__mod__(b)
-}
-
-if act[c]:
     print(f"РЕЗУЛЬТАТ = {act[c]}")
+
+except ZeroDivisionError as exc:
+    print("Делить на ноль нельзя!")
+except ValueError as ex:
+    print("Нужно вводить числа!")
+except KeyError as exp:
+    print("Допустимый ввод действий: +, -, *, /, **, %!")
