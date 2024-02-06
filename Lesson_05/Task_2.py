@@ -5,7 +5,7 @@
 
 try:
     a = float(input("Введите первое число: "))
-    c = input("Введите действие: ")
+    c = input("Введите действие (+, -, *, /, **, %): ")
     b = float(input("Введите второе число: "))
     act = {
         "+": a + b,
@@ -19,8 +19,8 @@ try:
     print(f"РЕЗУЛЬТАТ = {act[c]}")
 
 except ZeroDivisionError as exc:
-    print("Делить на ноль нельзя!")
-except ValueError as ex:
-    print("Нужно вводить числа цифрами!")
-except KeyError as exp:
-    print("Допустимый ввод действий: +, -, *, /, **, %!")
+    print("ОШИБКА! Делить на ноль нельзя!")
+except ValueError as exc:
+    print("ОШИБКА! Нужно вводить числа цифрами!")
+except KeyError as exc:
+    print("ОШИБКА! Допустимый ввод действий: +, -, *, /, **, %!")
