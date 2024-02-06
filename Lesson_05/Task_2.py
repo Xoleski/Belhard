@@ -21,6 +21,6 @@ try:
 except ZeroDivisionError as exc:
     print("Делить на ноль нельзя!")
 except ValueError as ex:
-    print("Нужно вводить числа!")
+    print("Нужно вводить числа цифрами!")
 except KeyError as exp:
     print("Допустимый ввод действий: +, -, *, /, **, %!")
