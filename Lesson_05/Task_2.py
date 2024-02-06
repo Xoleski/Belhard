@@ -56,7 +56,7 @@ except KeyError as exc:
 #         rez = a1 % b1
 #     else:
 #         rez = er_2
-#     print(f"РУЗУЛЬТАТ = {rez}" if not (rez == er_1 or rez == er_2) else f"{rez}")
+#     print(f"РЕЗУЛЬТАТ = {rez}" if not (rez == er_1 or rez == er_2) else f"{rez}")
 #
 # except ValueError as exc:
 #     print(er_3)
