@@ -18,7 +18,6 @@ try:
 
     print(f"РЕЗУЛЬТАТ = {act[c]}")
 
-
 except ZeroDivisionError as exc:
     print("ОШИБКА! Делить на ноль нельзя!")
 except ValueError as exc:
