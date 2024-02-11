@@ -55,6 +55,3 @@ def trans_morze(msg: str, morz_dict):
 msg2 = "Hello World 7"
 print(trans_morze(msg2, morze))
 
-
-
-
