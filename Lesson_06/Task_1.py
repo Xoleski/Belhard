@@ -1,35 +1,30 @@
 # Написать функцию перевода десятичного числа в двоичное и обратно, без
 # использования функции int
 
-def vb(fra):
-        def bin_in(fra):
-            k = []
-            v = fra
-            while v:
+def vb(numb: int | str):
+    def bin_in(dec: int):
+        k = []
+        v = dec
+        while v:
+            a = v % 2
+            k.append(a)
+            v = v // 2
+        k.reverse()
+        return "".join(list(map(str, k)))
 
-                a = v % 2
-                k.append(a)
-                v = v // 2
+    def bin_out(dva: str):
+        i = 0
+        while bin_in(i) != dva:
+            i += 1
+        return i
 
-            k.reverse()
-            l = "".join(list(map(str, k)))
-
-            return l
-
-        def bin_out(fra):
-            i = 0
-
-            while bin_in(i) != fra:
-                i += 1
-
-            return i
-
-        if isinstance(fra, int):
-            return bin_in(fra)
-        else:
-            return bin_out(fra)
+    if isinstance(numb, int):
+        return bin_in(numb)
+    else:
+        return bin_out(numb)
 
 
 print(a := vb(13))
 print(b := vb("100101"))
+
 
