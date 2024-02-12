@@ -5,10 +5,8 @@
 
 def mlt(l_1: list):
     l_2 = [l_1[1] * l_1[-1]]
-    i = 1
-    while i < (len(l_1)-1):
+    for i in range(1, len(l_1)-1):
         l_2.append(l_1[i-1]*l_1[i+1])
-        i += 1
     l_2.append(l_1[-2]*l_1[0])
     return l_2
 
