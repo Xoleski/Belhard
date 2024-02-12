@@ -6,7 +6,7 @@
 
 def no_data(users: list, key: str):
     users_without_email = []
-    for index, item in enumerate(users):
+    for item in users.keys():
         if not key in users[item]:
             users_without_email.append(item)
         elif not users[item][key]:
