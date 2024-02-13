@@ -13,6 +13,6 @@ class Car:
                 f'{"авто свободно" if not self.busy else "авто занято"}')
 
 
-bmv = Car('голубой', 5, True)
+bmv = Car('голубой', 4, True)
 print(bmv)
 
