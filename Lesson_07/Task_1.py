@@ -6,9 +6,13 @@ class Car:
         self.busy = is_busy
 
     def __str__(self):
-        return f'Авто {self.color}: {self.seats} мест, {"есть детское кресло" if self.baby else "нет детского кресла"}, {"авто свободно" if not self.busy else "авто занято"}'
+        return (f'Авто: \n'
+                f'{self.color} цвет, \n'
+                f'{self.seats} мест, \n'
+                f'{"есть детское кресло" if self.baby else "нет детского кресла"}, \n'
+                f'{"авто свободно" if not self.busy else "авто занято"}')
 
 
-bmv = Car('голубая', 5, True, True)
+bmv = Car('голубой', 5, True)
 print(bmv)
 
