@@ -7,10 +7,10 @@
 def no_data(users: list, key: str):
     users_without_email = []
     for item in users.keys():
-        if not key in users[item]:
-            users_without_email.append(item)
+        if key not in users[item]:
+            users_without_email.append(users[item]['name'])
         elif not users[item][key]:
-            users_without_email.append(item)
+            users_without_email.append(users[item]['name'])
     return users_without_email
 
 
@@ -25,7 +25,7 @@ users = {
         "name": "name_02",
         "last_name": "last_name_02",
         "phone_number": "phone_number_02",
-        "email": ""
+        "email": None
     },
     "id_03": {
         "name": "name_03",
@@ -59,3 +59,5 @@ users = {
 
 key = "email"
 print(no_data(users, key))
+
+
