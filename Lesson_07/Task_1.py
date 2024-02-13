@@ -120,6 +120,12 @@ class Category:
     def get(cls, index: int):
         return cls.categories[index]
 
+    @classmethod
+    def delete(cls, index: int):
+        try:
+            del (cls.categories[index])
+        except IndexError:
+            pass
 
     # def __int__(self, categories):
     #     self.cat = categories
@@ -130,7 +136,8 @@ kitkat = Category().add("low")
 print(kitkat)
 kitkat = Category().add("high")
 print(kitkat)
-print(i := Category().get(2))
+Category().delete(2)
+print(i := Category().get(1))
 
 # Category().add('high')
 # print(kitkat)
