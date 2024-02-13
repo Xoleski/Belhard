@@ -16,6 +16,16 @@ class Car:
         self.baby = is_baby_seat
         self.busy = is_busy
 
+    def get_instance_names(self):
+        names = [i for i, j in globals().items() if isinstance(j, type(self))]
+        if names:
+            return names
+
+    def get_var_name(self):
+        for k, v in globals().items():
+            if v is self:
+                return k
+
     def __str__(self):
         return (f'Авто: '
                 f'{self.color} цвет, '
@@ -59,20 +69,22 @@ class Taxi:
             elif is_baby and not self.car[i].baby:
                 pass
             elif not self.car[i].busy:
-                a = f'{self.car[i]}\n'
-                b = self.car[i]
+                b = self.car[i].get_var_name()
+                a = f'{b.upper()} {self.car[i]}'
                 self.car[i].busy = True
                 break
         return a
 
 
 d = Taxi([bmv, mazda, opel, bugatti])
-# print(list(d)[1])
+
 s = d.find_car(3, True)
 print("s: ", s)
-k = d.find_car(2, False)
-print("k: ", k)
+p = d.find_car(2, False)
+print("p: ", p)
 l = d.find_car(2, False)
 print("l: ", l)
 x = d.find_car(5, False)
 print("x: ", x)
+kj = d.find_car(2, False)
+print("kj: ", kj)
