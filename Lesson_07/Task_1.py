@@ -58,9 +58,6 @@ class Taxi:
     def __init__(self, cars: list[Car]):
         self.car = cars
 
-    # def __str__(self):
-    #     return f"{self.car[1].seats}"
-
     def find_car(self, count_passengers, is_baby):
         a = None
         for i in range(len(self.car)):
@@ -108,7 +105,35 @@ print("kj: ", kj)
 # уникальность в списке категорий, вызвать исключение ValueError
 
 
+class Category:
+    categories = []
 
+    @classmethod
+    def add(cls, name: str):
+        if name in cls.categories:
+            raise ValueError
+        else:
+            cls.categories.append(name)
+            return cls.categories.index(name)
+
+    @classmethod
+    def get(cls, index: int):
+        return cls.categories[index]
+
+
+    # def __int__(self, categories):
+    #     self.cat = categories
+
+
+mn = ['low', 'high', 'medium']
+kitkat = Category().add("low")
+print(kitkat)
+kitkat = Category().add("high")
+print(kitkat)
+print(i := Category().get(2))
+
+# Category().add('high')
+# print(kitkat)
 
 
 
