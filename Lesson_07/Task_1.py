@@ -127,6 +127,18 @@ class Category:
         except IndexError:
             pass
 
+    @classmethod
+    def update(cls, index: int, new_name: str):
+        if index >= len(cls.categories):
+            cls.categories.append(new_name)
+        elif new_name not in cls.categories:
+            cls.categories[index] = new_name
+        else:
+            raise ValueError
+
+
+
+
     # def __int__(self, categories):
     #     self.cat = categories
 
@@ -136,8 +148,12 @@ kitkat = Category().add("low")
 print(kitkat)
 kitkat = Category().add("high")
 print(kitkat)
-Category().delete(2)
-print(i := Category().get(1))
+# Category().delete(2)
+# print(i := Category().get(0))
+kitkat = Category().update(2, "medium")
+print(kitkat)
+print(i := Category().get(2))
+Category().update(2, "medium")
 
 # Category().add('high')
 # print(kitkat)
