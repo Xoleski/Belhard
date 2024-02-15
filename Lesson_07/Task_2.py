@@ -154,6 +154,7 @@ class CategoryList:
         except IndexError:
             print("IndexError", "Нет такого индекса")
 
+
 CategoryList().add({"low": False})
 
 print(CategoryList().get(0))
