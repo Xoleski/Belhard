@@ -1,5 +1,5 @@
 from psycopg2 import connect
-
+# from psycopg2. import cursor
 
 with connect(dsn= "postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12") as conn:
     with conn.cursor() as cur: # type: cursor
@@ -34,6 +34,9 @@ with connect(dsn= "postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12") as con
         # """, ("MOTO", ))
         # conn.commit()
 
+        cur.execute("""
+            SELECT * FROM tags;
+        """)
 
 
 
