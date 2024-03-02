@@ -35,5 +35,16 @@ cur.execute("""
     );
 """)
 conn.commit()
+
+cur.execute("""
+    CREATE INDEX index_category_id ON products (categories_id)
+""")
+
+cur.execute("""
+    CREATE INDEX index_is_published ON products (is_published)
+""")
+
+
+
 conn.close()
 
