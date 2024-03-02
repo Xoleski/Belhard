@@ -4,8 +4,9 @@
 
 from sqlite3 import connect
 
-conn = connect("bd.sqlite3")
-cur = conn.cursor()
+conn = connect("bd.sqlite3") # путь к БД
+cur = conn.cursor() # курсор для совершения транзакций нужен
+# у курсора есть методы: execut, executemany, ...
 cur.execute("""
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
