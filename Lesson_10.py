@@ -1,10 +1,10 @@
 # модуль - это пайтон файл
 # файл с модулями - это пакет
 
-
+import sqlite3
 from sqlite3 import connect
 
-conn = connect("bd.sqlite3") # путь к БД
+conn = connect("bd_1.db") # путь к БД
 cur = conn.cursor() # курсор для совершения транзакций нужен
 # у курсора есть методы: execut, executemany, ...
 cur.execute("""
@@ -15,7 +15,6 @@ cur.execute("""
     );
 """)
 conn.commit()
-
 
 cur.execute("""
     CREATE TABLE IF NOT EXISTS categ (
@@ -36,5 +35,5 @@ cur.execute("""
     );
 """)
 conn.commit()
-
+conn.close()
 
