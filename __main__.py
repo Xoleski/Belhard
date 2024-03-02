@@ -1,3 +1,6 @@
+
+print("HELLO WORLD")
+
 from itertools import *
 
 # for i in combinations("Hello", 2):
