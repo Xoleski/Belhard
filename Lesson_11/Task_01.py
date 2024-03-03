@@ -6,21 +6,21 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
     with conn.cursor() as cur:
 
         cur.execute("""
-            CREATE TABLE IF NOT EXIST departments(
+            CREATE TABLE IF NOT EXISTS departments(
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(32) NOT NULL UNIQUE CHECK ( length(name) >= 2 )
             );
         """)
 
         cur.execute("""
-            CREATE TABLE IF NOT EXIST sub_departments(
+            CREATE TABLE IF NOT EXISTS sub_departments(
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(32) NOT NULL UNIQUE CHECK ( lenght(name) >= 2 )
             );
         """)
 
         cur.execute("""
-            CREATE TABLE IF NOT EXIST users(
+            CREATE TABLE IF NOT EXISTS users(
                 id SERIAL PRIMARY KEY,
                 department_id  INTEGER,
                 sub_department_id INTEGER,
@@ -30,14 +30,16 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         """)
 
         cur.execute("""
-            CREATE TABLE IF NOT EXIST chats(
+            CREATE TABLE IF NOT EXISTS chats(
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(32) NOT NULL CHECK ( length(name) >= 2 )
             );
         """)
 
         cur.execute("""
-            CREATE TABLE IF NOT EXIST
+            CREATE TABLE IF NOT EXISTS chats_relations(
+                
+            );
         """)
 
 
