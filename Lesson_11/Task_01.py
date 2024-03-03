@@ -57,8 +57,55 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         # cur.execute("drop table departments")
         # conn.commit()
 
+        # cur.execute("""
+        #     INSERT INTO departments (name) VALUES (%s), (%s), (%s), (%s)
+        # """, ("DEP_1", "DEP_2", "DEP_3", "DEP_4")
+        #     )
+
+        # cur.execute("""
+        #     INSERT INTO sub_departments (name) VALUES (%s), (%s), (%s), (%s)
+        # """, ("SUB_1", "SUB_2", "SUB_3", "SUB_4")
+        #     )
+
+
+        # cur.execute("""
+        #     INSERT INTO users (department_id, sub_department_id)
+        #     VALUES (%s, %s), (%s, %s), (%s, %s), (%s, %s), (%s, %s)
+        # """, (9, 9, 9, 10, 10, None, None, 11, 12, 12)
+        #     )
+        #
+        # conn.commit()
+
+        # cur.execute("""
+        #     INSERT INTO chats (name) VALUES (%s), (%s), (%s), (%s), (%s)
+        # """, ("CH_1", "CH_2", "CH_3", "CH_4", "CH_5")
+        #     )
+
+        # cur.execute("""
+        #     INSERT INTO chats_relations (chat_id, department_id, sub_department_id)
+        #     VALUES (%s, %s, %s), (%s, %s, %s), (%s, %s, %s)
+        # """, (1, 9, 10, 2, 9, 9, 3, 10, None)
+        #     )
+        #
+        # conn.commit()
+
+        #
+        # cur.execute("""
+        #     SELECT * FROM chats_relations
+        # """)
+        #
+        # conn.commit()
+        #
+        # print(cur.fetchall())
+
         cur.execute("""
-            INSERT INTO departments (name) VALUES (%s)
-        """, "DEP_1, _DEP_2, DEP_3, DEP_4")
+            SELECT * FROM chats_relations
+        """)
+
         conn.commit()
+
+        print(cur.fetchall())
+
+
+
 
