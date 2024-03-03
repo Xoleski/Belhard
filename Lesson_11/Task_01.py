@@ -91,16 +91,39 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
 
         #
         # cur.execute("""
-        #     SELECT * FROM chats_relations
+        #     SELECT * FROM users
         # """)
         #
         # conn.commit()
         #
         # print(cur.fetchall())
 
+        # cur.execute("""
+        #     SELECT chats_relations.chat_id as chat_id FROM chats_relations
+        #     WHERE
+        # """)
+
+        # cur.execute("""
+        #
+        #     SELECT chats_relations.chat_id as chat_id
+        #     FROM chats_relations INNER JOIN departments ON departments.id = chats_relations.department_id
+        #     INNER JOIN sub_departments ON sub_departments.id = chats_relations.sub_department_id
+        #     INNER JOIN chats ON chats.id = chats_relations.chat_id
+        #
+        # """)
+
         cur.execute("""
-            SELECT * FROM chats_relations
+
+            SELECT chats.name as chat_name, users.id as user_id
+            FROM chats_relations INNER JOIN departments ON departments.id = chats_relations.department_id
+            INNER JOIN sub_departments ON sub_departments.id = chats_relations.sub_department_id
+            INNER JOIN chats ON chats.id = chats_relations.chat_id
+            INNER JOIN users ON users.department_id = chats_relations.department_id AND users.sub_department_id = chats_relations.sub_department_id
+
+
         """)
+
+
 
         conn.commit()
 
