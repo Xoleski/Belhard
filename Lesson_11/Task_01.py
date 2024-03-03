@@ -38,7 +38,13 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
 
         cur.execute("""
             CREATE TABLE IF NOT EXISTS chats_relations(
-                
+                id SERIAL PRIMARY KEY,
+                chat_id INTEGER NOT NULL,
+                department_id INTEGER,
+                sub_department_id INTEGER,
+                FOREIGN kEY (chat_id) REFERENCE chats(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+                FOREIGN KEY (department_id) REFERENCE departmentS(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+                FOREIGN KEY (sub_department_id) REFERENCE sub_departments(id) ON DELETE RESTRICT ON UPDATE CASCADE
             );
         """)
 
