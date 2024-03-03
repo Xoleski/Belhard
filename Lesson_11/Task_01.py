@@ -58,6 +58,7 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         # conn.commit()
 
         cur.execute("""
-            INSERT INTO departments (name) 
-        """)
+            INSERT INTO departments (name) VALUES (%s)
+        """, "DEP_1, _DEP_2, DEP_3, DEP_4")
+        conn.commit()
 
