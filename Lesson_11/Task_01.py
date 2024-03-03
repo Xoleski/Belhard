@@ -6,7 +6,9 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
     with conn.cursor() as cur:
         cur.execute("""
             CREATE TABLE IF NOT EXIST users(
-            id INTEGER
+            id SERIAL NOT NULL PRIMARY KEY,
+            department_id INTEGER FOREIGN KEY,
+            sub_department_id INTEGER FOREIGN KEY
         """)
 
 
