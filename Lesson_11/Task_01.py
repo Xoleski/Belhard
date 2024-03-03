@@ -8,7 +8,7 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         cur.execute("""
             CREATE TABLE IF NOT EXIST departments(
             id SERIAL NOT NULL PRIMARY KEY,
-            name VARCHAR(32) UNIQUE NOT NULL
+            name VARCHAR(32) NOT NULL UNIQUE CHECK ( len(name) >= 2 )
             )
             
         """)
