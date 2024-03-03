@@ -7,25 +7,32 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
 
         cur.execute("""
             CREATE TABLE IF NOT EXIST departments(
-            id SERIAL NOT NULL PRIMARY KEY,
-            name VARCHAR(32) NOT NULL UNIQUE CHECK ( length(name) >= 2 )
+                id SERIAL NOT NULL PRIMARY KEY,
+                name VARCHAR(32) NOT NULL UNIQUE CHECK ( length(name) >= 2 )
             );
         """)
 
         cur.execute("""
-            CREATE TABLE IF NOT EXISTS sub_departments(
-            id SERIAL NOT NULL PRIMARY KEY,
-            name VARCHAR(32) NOT NULL UNIQUE CHECK ( lenght(name) >= 2 )
+            CREATE TABLE IF NOT EXIST sub_departments(
+                id SERIAL NOT NULL PRIMARY KEY,
+                name VARCHAR(32) NOT NULL UNIQUE CHECK ( lenght(name) >= 2 )
             );
         """)
 
         cur.execute("""
             CREATE TABLE IF NOT EXIST users(
-            id SERIAL NOT NULL PRIMARY KEY,
-            department_id  INTEGER,
-            sub_department_id INTEGER,
-            FOREIGN KEY (department_id) REFERENCE departments(id) ON DELETE RESTRICT ON UPDATE CASCADE, 
-            FOREIGN KEY (sub_department_id) REFERENCE sub_departments(id) ON DELETE RESTRICT ON UPDATE CASCADE
+                id SERIAL NOT NULL PRIMARY KEY,
+                department_id  INTEGER,
+                sub_department_id INTEGER,
+                FOREIGN KEY (department_id) REFERENCE departments(id) ON DELETE RESTRICT ON UPDATE CASCADE, 
+                FOREIGN KEY (sub_department_id) REFERENCE sub_departments(id) ON DELETE RESTRICT ON UPDATE CASCADE
+            );
+        """)
+
+        cur.execute("""
+            CREATE TABLE IF NOT EXIST chats(
+                id SERIAL NOT NULL PRIMARY KEY,
+                name VARCHAR(32) NOT NULL UNIQUE CHECK ( length(name) >= 2 )
             );
         """)
 
