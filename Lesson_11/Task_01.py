@@ -15,7 +15,7 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         # cur.execute("""
         #     CREATE TABLE IF NOT EXISTS sub_departments(
         #         id SERIAL PRIMARY KEY,
-        #         name VARCHAR(32) NOT NULL UNIQUE CHECK ( length(name) >= 2 )
+        #         name VARCHAR(32) NOT NULL CHECK ( length(name) >= 2 )
         #     );
         # """)
         #
@@ -50,5 +50,12 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         #
         # conn.commit()
 
+        # cur.execute("drop table chats_relations")
+        # cur.execute("drop table chats")
+        # cur.execute("drop table users")
+        # cur.execute("drop table sub_departments")
+        # cur.execute("drop table departments")
+        # conn.commit()
 
+        ...
 
