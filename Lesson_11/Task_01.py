@@ -3,7 +3,7 @@ from psycopg2._psycopg import cursor
 from psycopg2.extras import NamedTupleCursor
 
 with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_factory=NamedTupleCursor) as conn:
-    with conn.cursor() as cur:
+    with conn.cursor() as cur: # type cursor
 
         cur.execute("""
             CREATE TABLE IF NOT EXISTS departments(
@@ -15,7 +15,7 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         cur.execute("""
             CREATE TABLE IF NOT EXISTS sub_departments(
                 id SERIAL PRIMARY KEY,
-                name VARCHAR(32) NOT NULL UNIQUE CHECK ( lenght(name) >= 2 )
+                name VARCHAR(32) NOT NULL UNIQUE CHECK ( length(name) >= 2 )
             );
         """)
 
@@ -47,6 +47,8 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
                 FOREIGN KEY (sub_department_id) REFERENCE sub_departments(id) ON DELETE RESTRICT ON UPDATE CASCADE
             );
         """)
+
+        conn.commit()
 
 
 
