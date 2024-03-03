@@ -57,5 +57,7 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
         # cur.execute("drop table departments")
         # conn.commit()
 
-        ...
+        cur.execute("""
+            I
+        """)
 
