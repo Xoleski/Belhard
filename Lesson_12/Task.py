@@ -104,12 +104,17 @@ from sqlalchemy import (
     insert
 )
 
-from sqlalchemy.dialects.postgresql import ENUM as PgEnum
+# from sqlalchemy.dialects.postgresql import ENUM as PgEnum
 
-# from enum import Enum
+from enum import IntEnum
 
 from sqlalchemy.orm import DeclarativeBase, relationship, sessionmaker
 
+
+class TaskStatus(IntEnum):
+    TODO: int = 1
+    done: int = 2
+    not_done: int = 3
 
 class Base(DeclarativeBase):
     ...
@@ -135,9 +140,7 @@ class UsersW(Base):
     tasks = relationship(argument="Tasks", back_populates="usersw")
 
 
-# class StatusEnum(Enum):
-#     done = "done"
-#     not_done = "not_done"
+
 
 
 class Tasks(Base):
@@ -153,7 +156,7 @@ class Tasks(Base):
     description = Column(TEXT)
     start_date = Column(TIMESTAMP, nullable=False)
     end_date = Column(TIMESTAMP, nullable=False)
-    status = Column(PgEnum(name="status", values=["done", "not_done"]))
+    status = Column(Enum(TaskStatus), nullable=False, default=TaskStatus.TODO)
     project_id = Column(INT, ForeignKey(column=Projects.id, ondelete="RESTRICT", onupdate="CASCADE"), nullable=False)
     executor_id = Column(INT, ForeignKey(column=UsersW.id, ondelete="RESTRICT", onupdate="CASCADE"), nullable=False)
 
@@ -183,15 +186,83 @@ session_maker = sessionmaker(bind=engine)
 
 
 
-# ВЫВОД ЗНАЧЕНИЙ В СТОЛБЦЕ
-with session_maker() as session:
-    response = session.get(entity=Tasks, ident=4)
-    print(response.start_date)
+# # ВЫВОД ЗНАЧЕНИЙ В СТОЛБЦЕ
+# with session_maker() as session:
+#     response = session.get(entity=Tasks, ident=4)
+#     print(response.start_date)
+
+
+
 
 
 # with session_maker() as session:
-#     response = session.scalars(select(UsersW.id))
-#     print([i for i in response])
+    # session.execute(
+    #     insert(UsersW).values([{"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}, {"id": 5},])
+    # )
+    # session.commit()
+
+    # response = session.scalars(select(UsersW.id))
+    # print("id: ", [i for i in response])
+    # print(response)
+#
+# with session_maker() as session:
+    # session.execute(
+    #     insert(Projects).values([{"name": "pj_1"}, {"name": "pj_2"}, {"name": "pj_3"}, {"name": "pj_4"}])
+    # )
+    # session.commit()
+
+    # response = session.scalars(select(Projects.id))
+    # response_ = session.scalars(select(Projects.name))
+    # for j in zip([i for i in response], [i for i in response_]):
+    #     print("ID: ", j[0], "    NAME: ", j[1])
+
+    # print([i for i in session.execute(select(Projects).union_all())])
+
+from sqlalchemy import select, update, delete, insert, and_, all_, or_, any_, func, Table, alias
+
+with session_maker() as session:
+    # session.execute(
+    #     insert(Tasks).values([
+    #         {"title": "first", "description": "jump", "start_date": "2024-03-01 00:00:00",
+    #          "end_date": "2024-03-04 00:00:00", "status": TaskStatus.done, "project_id": 1, "executor_id": 1},
+    #         {"title": "second", "description": "sleep", "start_date": "2024-03-06 00:00:00",
+    #          "end_date": "2024-03-16 00:00:00", "status": TaskStatus.not_done, "project_id": 2, "executor_id": 2},
+    #         {"title": "third", "description": "drink", "start_date": "2024-03-10 00:00:00",
+    #          "end_date": "2024-03-15 00:00:00", "project_id": 3, "executor_id": 3},
+    #         {"title": "fourth", "description": "rest", "start_date": "2024-03-02 00:00:00",
+    #          "end_date": "2024-03-10 00:00:00", "status": TaskStatus.done, "project_id": 4, "executor_id": 4}
+    #     ])
+    # )
+    # session.commit()
+    #
+    response = session.scalars(select(Tasks.id))
+    response_ = session.scalars(select(Tasks.title))
+    response_1 = session.scalars(select(Tasks.description))
+    response_2 = session.scalars(select(Tasks.start_date))
+    response_3 = session.scalars(select(Tasks.end_date))
+    response_4 = session.scalars(select(Tasks.status))
+    response_5 = session.scalars(select(Tasks.project_id))
+    response_6 = session.scalars(select(Tasks.executor_id))
+
+    for j in zip([i for i in response], [i for i in response_], [i for i in response_1], [i for i in response_2],
+                 [i for i in response_3], [i for i in response_4], [i for i in response_5], [i for i in response_6]):
+        print("ID: ", j[0], "    TITLE: ", j[1], "    DESCR: ", j[2], "    StDate: ", j[3], "    EndDate: ", j[4],
+              "    STATUS: ", j[5], "    PJ_id: ", j[6], "    EXE_id: ", j[7])
+
+
+    # j1 = session.scalars(select(Tasks.title).join(Projects))
+    j1 = select(Tasks.title).join(Projects).join(UsersW)
+
+    j1 = j1.filter(
+        or_(
+            Tasks.status != TaskStatus.done,
+            Tasks.end_date < func.now()
+        )
+    )
+
+    j1 = session.scalars(j1)
+    # print(j1)
+    print([i for i in j1])
 
 # with session_maker() as session:
 #     session.execute(insert(Projects).values(name='first'))
@@ -208,19 +279,19 @@ with session_maker() as session:
 
 from sqlalchemy.orm import selectinload, joinedload
 
-q = select(Tasks).join(Projects)
-q = q.filter(
-    Tasks.status != "done"
-    # Tasks.end_date <= "2024-03-06 00:00:00"
-)
+# q = select(Tasks).join(Projects)
+# q = q.filter(
+#     Tasks.status != "not_done"
+#     # Tasks.end_date <= "2024-03-06 00:00:00"
+# )
+#
+# print(q)
 
-print(q)
 
 
-
-# from psycopg2 import connect
-# from psycopg2._psycopg import cursor
-# from psycopg2.extras import NamedTupleCursor
+from psycopg2 import connect
+from psycopg2._psycopg import cursor
+from psycopg2.extras import NamedTupleCursor
 #
 # with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_factory=NamedTupleCursor) as conn:
 #     with conn.cursor() as cur: # type: cursor
@@ -251,18 +322,22 @@ print(q)
 #
 # with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_factory=NamedTupleCursor) as conn:
 #     with conn.cursor() as cur: # type: cursor
+# #         # cur.execute("""
+# #         #     INSERT INTO tasks (title, description, start_date, end_date, project_id, executor_id) VALUES (%s, %s, %s, %s, %s, %s), (%s, %s, %s, %s, %s, %s), (%s, %s, %s, %s, %s, %s)
+# #         # """, ("task_1", "dododo", "2024-03-01 00:00:00", "2024-03-03 00:00:00", 1, 1, "task_2", "lalala", "2024-02-01 00:00:00", "2024-03-17 00:00:00", 2, 2, "task_3", "bebebe", "2024-02-15 00:00:00", "2024-02-29 00:00:00", 3, 3)
+# #         #     )
+# #
 #         # cur.execute("""
-#         #     INSERT INTO tasks (title, description, start_date, end_date, project_id, executor_id) VALUES (%s, %s, %s, %s, %s, %s), (%s, %s, %s, %s, %s, %s), (%s, %s, %s, %s, %s, %s)
-#         # """, ("task_1", "dododo", "2024-03-01 00:00:00", "2024-03-03 00:00:00", 1, 1, "task_2", "lalala", "2024-02-01 00:00:00", "2024-03-17 00:00:00", 2, 2, "task_3", "bebebe", "2024-02-15 00:00:00", "2024-02-29 00:00:00", 3, 3)
-#         #     )
-#
-#         # cur.execute("""
-#         #     SELECT * FROM tasks
-#         # """)
+#         #     INSERT INTO tasks (status) VALUES (%s)
+#         # """, ("done", ))
+#         #
+#         cur.execute("""
+#             SELECT * FROM projects
+#         """)
 #
 #         for result in cur:
 #             print(result)
-
+        #
 
 
 
