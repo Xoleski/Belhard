@@ -218,7 +218,7 @@ session_maker = sessionmaker(bind=engine)
 
     # print([i for i in session.execute(select(Projects).union_all())])
 
-from sqlalchemy import select, update, delete, insert, and_, all_, or_, any_, func, Table, alias
+from sqlalchemy import select,  delete, insert, and_, all_, or_, any_, func, Table, alias
 
 with session_maker() as session:
     # session.execute(
@@ -249,20 +249,69 @@ with session_maker() as session:
         print("ID: ", j[0], "    TITLE: ", j[1], "    DESCR: ", j[2], "    StDate: ", j[3], "    EndDate: ", j[4],
               "    STATUS: ", j[5], "    PJ_id: ", j[6], "    EXE_id: ", j[7])
 
-
+from sqlalchemy.orm import selectinload, joinedload
     # j1 = session.scalars(select(Tasks.title).join(Projects))
-    j1 = select(Tasks.title).join(Projects).join(UsersW)
+# j1 = select(Tasks.title, Tasks.executor_id).join(UsersW)
+#
+# j1 = j1.filter(
+#     or_(
+#         Tasks.status != TaskStatus.done,
+#         Tasks.end_date < func.now()
+#     )
+# )
+# print(j1)
+
+# for i in j1.fetch:
+#     print(i)
+
+# with session_maker() as session:
+#     trtr = update(Tasks).where(Tasks.id == 8).values(end_date="2024-03-07 00:00:00")
+#     session.execute(trtr)
+#     session.commit()
+
+with session_maker() as session:
+    j1 = select(Tasks.title, UsersW.id, Projects.name).join(UsersW).join(Projects)
 
     j1 = j1.filter(
-        or_(
+        and_(
             Tasks.status != TaskStatus.done,
-            Tasks.end_date < func.now()
+            Tasks.end_date <= func.now()
         )
     )
+    for i in session.execute(j1).unique():
+        print(i)
+#
 
-    j1 = session.scalars(j1)
-    # print(j1)
-    print([i for i in j1])
+# with session_maker() as session:
+#     task = session.scalar(
+#         select(Tasks)
+#         .options(
+#             joinedload(Tasks.usersw),
+#             joinedload(Tasks.projects),
+#
+#         )
+#
+#     )
+#     print(task.projects)
+
+
+
+
+
+
+
+
+# with session_maker() as session:
+#     resp = session.scalars(statement=j1)
+#     print(resp)
+#
+    # for i in j1:
+    #     gdg = session.get(entity=UsersW, ident=i)
+    #     print(gdg.id)
+#
+#     j2 = session.scalars(j1)
+#
+#     print(session.get(entity=Projects, ident=i) for i in j1)
 
 # with session_maker() as session:
 #     session.execute(insert(Projects).values(name='first'))
