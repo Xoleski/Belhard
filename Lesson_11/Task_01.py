@@ -223,25 +223,8 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
 
         """)
 
-
-
-        # cur.execute("""
-        #     SELECT chats.name FROM chats_relations
-        #     JOIN chats ON chats.id = chats_relations.chat_id
-        #     WHERE (chats_relations.sub_department_id IS NULL
-        #         OR chats_relations.sub_department_id = (
-        #             SELECT users.sub_department_id
-        #             FROM users
-        #             WHERE users.id = %(user_id)s)
-        #     ) AND
-        #         (chats_relations.department_id IS NULL
-        #         OR chats_relations.department_id = (
-        #             SELECT users.department_id
-        #             FROM users
-        #             WHERE users.id = %(user_id)s)
-        #     );
-        # """, ({"user_id": 3}))
-
+        for result in cur:
+            print(result)
 
         cur.execute("""
             SELECT chats.name FROM chats_relations
@@ -259,6 +242,16 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
                     WHERE users.id = %(user_id)s)
             );
         """, ({"user_id": 3}))
+
+
+
+
+        # cur.execute("""
+        #             SELECT users.department_id
+        #             FROM users
+        #             JOIN departments ON departments.id = users.department_id
+        # """)
+
 
         for result in cur:
             print(result)
