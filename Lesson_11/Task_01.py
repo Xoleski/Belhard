@@ -1,7 +1,7 @@
 from psycopg2 import connect
 from psycopg2._psycopg import cursor
 from psycopg2.extras import NamedTupleCursor
-
+#
 with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_factory=NamedTupleCursor) as conn:
     with conn.cursor() as cur: # type: cursor
 
@@ -222,17 +222,60 @@ with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_
             INNER JOIN users ON users.department_id = chats_relations.department_id AND users.sub_department_id = chats_relations.sub_department_id
 
         """)
-        
+
+
+
+        # cur.execute("""
+        #     SELECT chats.name FROM chats_relations
+        #     JOIN chats ON chats.id = chats_relations.chat_id
+        #     WHERE (chats_relations.sub_department_id IS NULL
+        #         OR chats_relations.sub_department_id = (
+        #             SELECT users.sub_department_id
+        #             FROM users
+        #             WHERE users.id = %(user_id)s)
+        #     ) AND
+        #         (chats_relations.department_id IS NULL
+        #         OR chats_relations.department_id = (
+        #             SELECT users.department_id
+        #             FROM users
+        #             WHERE users.id = %(user_id)s)
+        #     );
+        # """, ({"user_id": 3}))
+
+
+        cur.execute("""
+            SELECT chats.name FROM chats_relations
+            JOIN chats ON chats.id = chats_relations.chat_id
+            WHERE (chats_relations.sub_department_id IS NULL
+                OR chats_relations.sub_department_id = (
+                    SELECT users.sub_department_id
+                    FROM users
+                    WHERE users.id = %(user_id)s)
+            ) AND
+                (chats_relations.department_id IS NULL
+                OR chats_relations.department_id = (
+                    SELECT users.department_id
+                    FROM users
+                    WHERE users.id = %(user_id)s)
+            );
+        """, ({"user_id": 3}))
+
         for result in cur:
             print(result)
+
+
+
+# print("7*8=", a := 7*8)
+
+
 
 
 
 # ВТОРОЕ ЗАДАНИЕ
 
 
-with connect(dsn="postgres://user12:___:6666/user12", cursor_factory=NamedTupleCursor) as conn:
-    with conn.cursor() as cur: # type: cursor
+# with connect(dsn="postgres://user12:a0XCZnQ6H@217.76.60.77:6666/user12", cursor_factory=NamedTupleCursor) as conn:
+#     with conn.cursor() as cur: # type: cursor
         # cur.execute("""
         #     CREATE TABLE IF NOT EXISTS statuses(
         #         id SERIAL PRIMARY KEY,
@@ -287,12 +330,12 @@ with connect(dsn="postgres://user12:___:6666/user12", cursor_factory=NamedTupleC
 
         # conn.commit()
 
-        cur.execute("""
-            SELECT * FROM users_prod
-        """)
-
-        for result in cur:
-            print(result)
+        # cur.execute("""
+        #     SELECT * FROM users_prod
+        # """)
+        #
+        # for result in cur:
+        #     print(result)
 
 
 
