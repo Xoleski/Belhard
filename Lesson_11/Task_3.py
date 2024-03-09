@@ -24,12 +24,14 @@ from sqlalchemy import select,  delete, insert, and_, all_, or_, any_, func, Tab
 
 from sqlalchemy.orm import selectinload, joinedload
 
+from Lesson_12 import *
+from Lesson_12 import Task
 
 engine = create_engine(url="postgresql://user12:a0XCZnQ6H@217.76.60.77:6666/user12")
 session_maker = sessionmaker(bind=engine)
 
 with session_maker() as session:
-    ...
+    q = select(entity=Task.UsersW.id, ident=1)
 
-
+    print(q)
 
