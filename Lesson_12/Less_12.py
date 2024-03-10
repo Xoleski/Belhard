@@ -2,6 +2,7 @@ from sqlalchemy import (
     Column,
     INT,
     VARCHAR,
+    BOOLEAN,
     TEXT,
     TIMESTAMP,
     ForeignKey,
@@ -16,7 +17,7 @@ from sqlalchemy import (
     insert
 )
 
-from enum import IntEnum
+from enum import IntEnum, Enum as SimpleEnum
 
 from sqlalchemy.orm import DeclarativeBase, relationship, sessionmaker
 
@@ -32,12 +33,12 @@ class BloodType(IntEnum):
     III: int = 3
     IV: int = 4
 
+
 class RhType(IntEnum):
     BLANK: int = None
     ZERO: int = 0
     PLUS: int = 1
     MINUS: int = 2
-
 
 
 class Base(DeclarativeBase):
@@ -54,7 +55,21 @@ class Donor(Base):
     name = Column(VARCHAR(36))
     location = Column(VARCHAR(16))
     blood = Column(Enum(BloodType), nullable=False, default=BloodType.BLANK)
-    Rh = Column(Enum(RhType), nullable=False, default=RhType.BLANK)
+    rh = Column(Enum(RhType), nullable=False, default=RhType.BLANK)
+    heart = Column(BOOLEAN, nullable=False, default=False)
+    kidney_left = Column(BOOLEAN, nullable=False, default=False)
+    kidney_right = Column(BOOLEAN, nullable=False, default=False)
+    liver = Column(BOOLEAN, nullable=False, default=False)
+    pancreas = Column(BOOLEAN, nullable=False, default=False)
+    lung_left = Column(BOOLEAN, nullable=False, default=False)
+    lung_right = Column(BOOLEAN, nullable=False, default=False)
+    eyeball_left = Column(BOOLEAN, nullable=False, default=False)
+    eyeball_right = Column(BOOLEAN, nullable=False, default=False)
+    intestine = Column(BOOLEAN, nullable=False, default=False)
+    tissues = Column(BOOLEAN, nullable=False, default=False)
+
+
+
 
 class Departments(Base):
     __tablename__ = "departments"
