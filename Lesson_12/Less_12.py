@@ -25,8 +25,44 @@ from sqlalchemy import select,  delete, insert, and_, all_, or_, any_, func, Tab
 from sqlalchemy.orm import selectinload, joinedload
 
 
-engine = create_engine(url="postgresql://user12:a0XCZnQ6H@217.76.60.77:6666/user12")
-session_maker = sessionmaker(bind=engine)
+class BloodType(IntEnum):
+    BLANK: int = None
+    I: int = 1
+    II: int = 2
+    III: int = 3
+    IV: int = 4
 
-with session_maker() as session:
+class RhType(IntEnum):
+    BLANK: int = None
+    ZERO: int = 0
+    PLUS: int = 1
+    MINUS: int = 2
+
+
+
+class Base(DeclarativeBase):
     ...
+
+
+class Donor(Base):
+    __tablename__ = "donor"
+    __table_args__ = (
+        CheckConstraint("length(name) > 2"),
+    )
+
+    id = Column(INT, primary_key=True)
+    name = Column(VARCHAR(36))
+    location = Column(VARCHAR(16))
+    blood = Column(Enum(BloodType), nullable=False, default=BloodType.BLANK)
+    Rh = Column(Enum(RhType), nullable=False, default=RhType.BLANK)
+
+class Departments(Base):
+    __tablename__ = "departments"
+
+
+
+# engine = create_engine(url="postgresql://user12:a0XCZnQ6H@217.76.60.77:6666/user12")
+# session_maker = sessionmaker(bind=engine)
+
+# with session_maker() as session:
+#     ...
